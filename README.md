@@ -1,28 +1,281 @@
-# CodeMentor AI
+# 🚀 CodeMentor AI
 
-CodeMentor AI is a **single-agent AI programming assistant** built using the **Microsoft Agent Framework (MAF)**. It helps students learn programming by explaining code, identifying errors, generating code from natural language prompts, and suggesting optimizations—all through a single intelligent AI agent.
+> **An AI-powered Single-Agent Programming Mentor built with FastAPI and JavaScript**
 
-Unlike a traditional chatbot, CodeMentor AI uses structured prompts and tool integration to perform different programming-related tasks while maintaining a simple and modular architecture suitable for learning Agentic AI concepts.
+CodeMentor AI is an intelligent coding assistant designed to help students and developers understand, write, debug, and optimize code. It follows a **single-agent architecture**, where one AI agent dynamically adapts its behavior based on the selected programming task.
+
+---
 
 ## ✨ Features
 
-* 🔍 Explain code line by line
-* 🐞 Detect syntax and logical errors
-* 💻 Generate code from natural language prompts
-* ⚡ Suggest code optimizations and best practices
-* 📂 Read and analyze uploaded source code files
-* 🤖 Single-agent architecture powered by Microsoft Agent Framework
+- 📖 **Code Explainer**
+  - Explains code in simple, beginner-friendly language.
+  - Breaks down logic step-by-step.
+
+- 🐞 **Error Finder**
+  - Detects syntax and logical errors.
+  - Suggests possible fixes and improvements.
+
+- 💻 **Code Generator**
+  - Generates code from natural language prompts.
+  - Supports multiple programming languages.
+
+- ⚡ **Code Optimizer**
+  - Improves readability and performance.
+  - Suggests best coding practices.
+
+---
+
+## 🏗️ Project Architecture
+
+```text
+                User
+                  │
+                  ▼
+        Frontend (HTML/CSS/JS)
+                  │
+                  ▼
+        FastAPI Backend (/mentor)
+                  │
+                  ▼
+         CodeMentor Agent
+                  │
+                  ▼
+         Prompt Selection Layer
+                  │
+                  ▼
+        LLM Provider (OpenAI Compatible)
+                  │
+                  ▼
+            AI Generated Response
+```
+
+The application uses a **single intelligent agent** that changes its behavior based on the selected mode instead of creating multiple specialized agents.
+
+---
+
+## 📂 Project Structure
+
+```text
+CodeMentor_AI/
+│
+├── backend/
+│   ├── app.py
+│   ├── mentor.py
+│   ├── llm.py
+│   ├── prompts.py
+│   ├── tools.py
+│   ├── requirements.txt
+│   └── test_features.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── .env.example
+├── README.md
+└── .gitignore
+```
+
+---
 
 ## 🛠️ Tech Stack
 
-* Microsoft Agent Framework (MAF)
-* Python
-* FastAPI
-* HTML, CSS, JavaScript
-* OpenAI / GitHub Models
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+- Marked.js
 
-## 🎯 Project Goal
+### Backend
+- Python
+- FastAPI
+- Pydantic
+- Requests
+- Python-dotenv
 
-The goal of this project is to demonstrate how a **single AI agent** can perform multiple programming assistance tasks using reasoning, prompt engineering, and tool calling. It is designed as a beginner-friendly educational project that showcases the fundamentals of Agentic AI in software development.
+### AI
+- OpenAI Compatible API
+- Groq / OpenAI (configurable)
 
-> **Future Scope:** The current implementation uses a single AI agent. In future versions, the system can be extended into a multi-agent architecture with specialized agents for code explanation, debugging, optimization, documentation, and testing.
+---
+
+## 🔄 Request Flow
+
+```text
+User
+   │
+   ▼
+Frontend
+   │
+POST /mentor
+   │
+   ▼
+FastAPI
+   │
+   ▼
+CodeMentor Agent
+   │
+   ▼
+Prompt Selection
+   │
+   ▼
+LLM API
+   │
+   ▼
+AI Response
+   │
+   ▼
+Frontend
+```
+
+---
+
+## ⚙️ Installation
+
+### 1 Clone Repository
+
+```bash
+git clone https://github.com/Shrutiii01/CodeMentor_AI.git
+
+cd CodeMentor_AI
+```
+
+---
+
+### 2 Create Virtual Environment
+
+Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+python3 -m venv venv
+
+source venv/bin/activate
+```
+
+---
+
+### 3 Install Dependencies
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+---
+
+### 4 Configure Environment Variables
+
+Create a `.env` file.
+
+Example:
+
+```env
+OPENAI_API_PROVIDER=groq
+
+GROQ_API_KEY=YOUR_API_KEY
+
+GROQ_API_BASE=https://api.groq.com/openai/v1
+
+GROQ_MODEL=llama-3.3-70b-versatile
+```
+
+---
+
+### 5 Run the Project
+
+```bash
+uvicorn backend.app:app --reload
+```
+
+Visit
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## 📌 API Endpoint
+
+### POST `/mentor`
+
+Request
+
+```json
+{
+  "mode": "explain",
+  "language": "python",
+  "input_text": "print('Hello World')"
+}
+```
+
+Response
+
+```json
+{
+  "result": "The code prints Hello World to the console."
+}
+```
+
+---
+
+## 🎯 Supported Modes
+
+| Mode | Description |
+|------|-------------|
+| Explain | Explains source code |
+| Error Finder | Detects bugs and logic issues |
+| Generate | Generates code from prompts |
+| Optimize | Improves code quality |
+
+---
+
+## 📈 Future Improvements
+
+- Multi-Agent Architecture
+- Chat History
+- Authentication
+- Code Execution Sandbox
+- File Upload Support
+- GitHub Repository Analysis
+- AI Conversation Memory
+- Unit Test Generation
+
+---
+
+## 🎓 Educational Value
+
+This project demonstrates:
+
+- AI Integration with FastAPI
+- Prompt Engineering
+- REST API Development
+- Frontend–Backend Communication
+- Single-Agent AI Architecture
+- Clean Software Design Principles
+
+---
+
+## 👩‍💻 Author
+
+**Shruti Narsulwar**
+
+- Computer Science Engineering Student
+- Full Stack & AI Enthusiast
+- Passionate about AI-powered Developer Tools
+
+GitHub: https://github.com/Shrutiii01
+
+---
+
+## ⭐ If you found this project useful
+
+Give the repository a ⭐ and feel free to contribute or share feedback!
